@@ -1,15 +1,19 @@
 import { verifySignature } from "@upstash/qstash/nextjs";
-import { format } from "date-fns";
+import { addHours, format } from "date-fns";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Telegraf } from "telegraf";
 
 const bot = new Telegraf(process.env.BOT_TOKEN as string);
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // do stuff
-  const date = new Date();
+  // get current date
+  const now = new Date();
+
+  // add 7 hours to current date
+  const future = addHours(now, 7);
+
   // format date with this format: Jul, 31 2021 12:00:00
-  const formattedDate = format(date, "MMM, dd yyyy HH:mm:ss");
+  const formattedDate = format(future, "MMM, dd yyyy HH:mm:ss");
 
   try {
     // send message to telegram
