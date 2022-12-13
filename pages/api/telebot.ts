@@ -5,7 +5,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   console.log("If this is printed, the signature has already been verified");
 
   // do stuff
-  res.status(200).message({ message: "Hello World" });
+  res.status(200).json({ message: "Hello World" });
 }
 
 export default verifySignature(handler);
