@@ -19,7 +19,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     // send message to telegram
     await bot.telegram.sendMessage(
       process.env.CHAT_ID as string,
-      `Message sent from Next.js API using QStash cron at ${formattedDate}`
+      `Automatic Message sent from Next.js API using QStash cron at ${formattedDate}`
     );
     res.status(200).json({ message: "success" });
   } catch (err) {
